@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+    <ListPreference
+        android:key="@string/speed"
+        android:title="@string/speed"
+        android:dialogTitle="@string/speed"
+        android:entries="@array/speed_keys"
+        android:entryValues="@array/speed_values"
+        android:defaultValue="1000"/>
+    
+    <ListPreference 
+        android:key="@string/word_playback"
+        android:title="@string/word_playback"
+        android:dialogTitle="@string/word_playback"
+        android:entries="@array/playback_keys"
+        android:entryValues="@array/playback_values"
+        android:defaultValue="SHUFFLED"/>
+    
+    <CheckBoxPreference
+        android:key="@string/repeated"
+        android:title="@string/repeated"
+        android:defaultValue="true"/>
+</PreferenceScreen>

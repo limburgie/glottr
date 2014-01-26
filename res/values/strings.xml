@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name" translatable="false">Glottr</string>
+    <string name="button_start" translatable="false">Start</string>
+    <string name="button_stop" translatable="false">Stop</string>
+    <string name="from_language" translatable="false">From Language</string>
+    <string name="to_language" translatable="false">To Language</string>
+    <string name="exercise" translatable="false">Exercise</string>
+    <string name="action_settings" translatable="false">Settings</string>
+    <string name="title_activity_main" translatable="false">MainActivity</string>
+    <string name="speed" translatable="false">Speed</string>
+    <string name="word_playback" translatable="false">Word Playback</string>
+    <string name="repeated" translatable="false">Repeated</string>
+    <string name="arrow_right" translatable="false">&#8594;</string>
+    <string name="yes" translatable="false">Yes</string>
+    <string name="no" translatable="false">No</string>
+</resources>

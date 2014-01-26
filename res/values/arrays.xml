@@ -1,0 +1,22 @@
+<resources>
+    <string-array name="speed_keys" translatable="false">
+        <item>Slow</item>
+        <item>Intermediate</item>
+        <item>Fast</item>
+    </string-array>
+    <string-array name="speed_values" translatable="false">
+        <item>2000</item>
+        <item>1000</item>
+        <item>0</item>
+    </string-array>
+    <string-array name="playback_keys" translatable="false">
+        <item>Sequentially</item>
+        <item>Shuffled</item>
+        <item>Random</item>
+    </string-array>
+    <string-array name="playback_values" translatable="false">
+        <item>SEQUENTIALLY</item>
+        <item>SHUFFLED</item>
+        <item>RANDOM</item>
+    </string-array>
+</resources>

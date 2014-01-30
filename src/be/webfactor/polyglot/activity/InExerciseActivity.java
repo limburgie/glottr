@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.TextView;
 import be.webfactor.polyglot.R;
 import be.webfactor.polyglot.domain.Exercise;
@@ -29,8 +30,13 @@ public class InExerciseActivity extends ExerciseActivity {
 		runner.start(exercise);
 		
 		initializeAds();
+		keepScreenActive();
 	}
 	
+	private void keepScreenActive() {
+		getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
+	}
+
 	private void initializeAds() {
 		AdView adView = (AdView)this.findViewById(R.id.ad_view);
 	    AdRequest adRequest = new AdRequest.Builder().build();

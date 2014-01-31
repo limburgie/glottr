@@ -11,8 +11,9 @@ public enum Topic {
 	COLORS("colors"),
 	FAMILY("family"),
 	CITY("city"),
-	TIME("time"),
-	HOUSE("house");
+	HOUSE("house"),
+	DRINKING("drinking"),
+	TIME("time");
 	
 	private static final String BUNDLE_NAME = "be.webfactor.polyglot.exercises.Language";
 	

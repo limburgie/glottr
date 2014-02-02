@@ -15,6 +15,7 @@ public enum Topic {
 	EATING("eating"),
 	DRINKING("drinking"),
 	BODY("body"),
+	CLOTHING("clothing"),
 	TIME("time");
 	
 	private static final String BUNDLE_NAME = "be.webfactor.polyglot.exercises.Language";

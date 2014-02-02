@@ -12,6 +12,7 @@ public enum Topic {
 	FAMILY("family"),
 	CITY("city"),
 	HOUSE("house"),
+	EATING("eating"),
 	DRINKING("drinking"),
 	TIME("time");
 	

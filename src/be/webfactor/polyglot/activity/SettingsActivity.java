@@ -32,7 +32,12 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
 	public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {
 		Preference preference = findPreference(key);
 		if(preference instanceof ListPreference) {
-			preference.setSummary(((ListPreference)preference).getEntry());
+			CharSequence value = ((ListPreference)preference).getEntry();
+			preference.setSummary(value);
+			if("Word Playback".equals(key)) {
+				CheckBoxPreference repeated = (CheckBoxPreference) findPreference("Repeated");
+				repeated.setEnabled(!value.equals("Random"));
+			}
 		} else if(preference instanceof CheckBoxPreference) {
 			String yes = getResources().getString(R.string.yes);
 			String no = getResources().getString(R.string.no);

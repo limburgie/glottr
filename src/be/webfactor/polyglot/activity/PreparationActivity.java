@@ -2,6 +2,8 @@ package be.webfactor.polyglot.activity;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.view.Menu;
@@ -28,19 +30,30 @@ public class PreparationActivity extends Activity {
 	private static final Topic DEFAULT_TOPIC = Topic.COUNTING;
 	private static final Language DEFAULT_FROM_LANGUAGE = Language.EN;
 	private static final Language DEFAULT_TO_LANGUAGE = Language.ES;
+	
+	private static final String TOPIC_PREF_KEY = "TOPIC";
+	private static final String FROM_LANG_PREF_KEY = "FROM_LANG";
+	private static final String TO_LANG_PREF_KEY = "TO_LANG";
 
 	private Spinner fromLanguageSpinner;
 	private Spinner toLanguageSpinner;
 	private Spinner topicSpinner;
 
-	private int currentTopicIndex = DEFAULT_TOPIC.ordinal();
-	private int currentFromIndex = DEFAULT_FROM_LANGUAGE.ordinal();
-	private int currentToIndex = DEFAULT_TO_LANGUAGE.ordinal();
+	private int currentTopicIndex;
+	private int currentFromIndex;
+	private int currentToIndex;
 
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		initializeSpinnerValues();
 		setupLayout();
 		initializeAds();
+	}
+
+	private void initializeSpinnerValues() {
+		currentTopicIndex = getEnumPreference(TOPIC_PREF_KEY, DEFAULT_TOPIC, Topic.class);
+		currentFromIndex = getEnumPreference(FROM_LANG_PREF_KEY, DEFAULT_FROM_LANGUAGE, Language.class);
+		currentToIndex = getEnumPreference(TO_LANG_PREF_KEY, DEFAULT_TO_LANGUAGE, Language.class);
 	}
 
 	private void initializeAds() {
@@ -88,6 +101,7 @@ public class PreparationActivity extends Activity {
 			public void onItemSelected(AdapterView<?> parent, View view,
 					int position, long id) {
 				currentTopicIndex = position;
+				saveEnumPreference(TOPIC_PREF_KEY, currentTopicIndex, Topic.class);
 			}
 
 			public void onNothingSelected(AdapterView<?> parent) {
@@ -108,6 +122,8 @@ public class PreparationActivity extends Activity {
 						switchPositionsIfNecessary(toLanguageSpinner,
 								currentFromIndex, position);
 						currentFromIndex = position;
+						
+						saveEnumPreference(FROM_LANG_PREF_KEY, currentFromIndex, Language.class);
 					}
 
 					public void onNothingSelected(AdapterView<?> parent) {
@@ -121,13 +137,30 @@ public class PreparationActivity extends Activity {
 						switchPositionsIfNecessary(fromLanguageSpinner,
 								currentToIndex, position);
 						currentToIndex = position;
+						saveEnumPreference(TO_LANG_PREF_KEY, currentToIndex, Language.class);
 					}
 
 					public void onNothingSelected(AdapterView<?> parent) {
 					}
 				});
 	}
-
+	
+	private <T extends Enum<T>> int getEnumPreference(String key, Enum<T> defaultValue, Class<T> enumType) {
+		SharedPreferences prefs = getPreferences(MODE_PRIVATE);
+		String result = prefs.getString(key, defaultValue.name());
+		try {
+			return Enum.valueOf(enumType, result).ordinal();
+		} catch(IllegalArgumentException e) {
+			return defaultValue.ordinal();
+		}
+	}
+	
+	private <T extends Enum<T>> void saveEnumPreference(String key, int index, Class<T> enumType) {
+		Editor prefs = getPreferences(MODE_PRIVATE).edit();
+		prefs.putString(key, enumType.getEnumConstants()[index].name());
+		prefs.commit();
+	}
+	
 	private void switchPositionsIfNecessary(Spinner target, int otherPosition,
 			int newPosition) {
 		if (newPosition == target.getSelectedItemPosition()) {

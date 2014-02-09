@@ -233,19 +233,20 @@ containing a value of this type.
         public static final int red_button=0x7f02001e;
     }
     public static final class id {
-        public static final int action_settings=0x7f06000c;
-        public static final int ad_view=0x7f060006;
-        public static final int button_start=0x7f06000b;
-        public static final int button_stop=0x7f060007;
-        public static final int exercise=0x7f06000a;
-        public static final int from_language=0x7f060008;
+        public static final int action_settings=0x7f06000d;
+        public static final int ad_view=0x7f060007;
+        public static final int button_start=0x7f06000c;
+        public static final int button_stop=0x7f060008;
+        public static final int exercise=0x7f06000b;
+        public static final int from_language=0x7f060009;
         public static final int hybrid=0x7f060004;
         public static final int none=0x7f060000;
         public static final int normal=0x7f060001;
+        public static final int progress_bar=0x7f060006;
         public static final int satellite=0x7f060002;
         public static final int spoken_word=0x7f060005;
         public static final int terrain=0x7f060003;
-        public static final int to_language=0x7f060009;
+        public static final int to_language=0x7f06000a;
     }
     public static final class integer {
         public static final int google_play_services_version=0x7f080000;

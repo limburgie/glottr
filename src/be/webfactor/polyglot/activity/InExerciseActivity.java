@@ -8,6 +8,7 @@ import android.content.res.Configuration;
 import android.os.Bundle;
 import android.view.View;
 import android.view.WindowManager;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import be.webfactor.polyglot.R;
 import be.webfactor.polyglot.domain.Exercise;
@@ -19,6 +20,7 @@ public class InExerciseActivity extends ExerciseActivity {
 	
 	private ExerciseRunner runner;
 	private TextView spokenWord;
+	private ProgressBar progressBar;
 	
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -60,6 +62,7 @@ public class InExerciseActivity extends ExerciseActivity {
 	private void setupLayout() {
 		setContentView(R.layout.in_exercise);
 		spokenWord = (TextView) findViewById(R.id.spoken_word);
+		progressBar = (ProgressBar) findViewById(R.id.progress_bar);
 	}
 	
 	public void stopSpeaking(View view) {
@@ -72,6 +75,10 @@ public class InExerciseActivity extends ExerciseActivity {
 
 	public void setCurrentWord(String word) {
 		spokenWord.setText(word);
+	}
+
+	public void setExerciseProgress(int progress) {
+		progressBar.setProgress(progress);
 	}
 
 }

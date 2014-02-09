@@ -1,24 +1,27 @@
 package be.webfactor.polyglot.activity;
 
-import com.google.android.gms.ads.AdRequest;
-import com.google.android.gms.ads.AdView;
-
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.view.View;
 import android.view.WindowManager;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import be.webfactor.polyglot.R;
 import be.webfactor.polyglot.domain.Exercise;
 import be.webfactor.polyglot.service.exercise.ExerciseActivity;
 import be.webfactor.polyglot.service.exercise.ExerciseRunner;
 import be.webfactor.polyglot.service.exercise.ExerciseRunnerFactory;
+import be.webfactor.polyglot.service.translation.TranslationService;
+
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
 
 public class InExerciseActivity extends ExerciseActivity {
 	
 	private ExerciseRunner runner;
 	private TextView spokenWord;
+	private ProgressBar progressBar;
 	
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -60,6 +63,7 @@ public class InExerciseActivity extends ExerciseActivity {
 	private void setupLayout() {
 		setContentView(R.layout.in_exercise);
 		spokenWord = (TextView) findViewById(R.id.spoken_word);
+		progressBar = (ProgressBar) findViewById(R.id.progress_bar);
 	}
 	
 	public void stopSpeaking(View view) {
@@ -72,6 +76,14 @@ public class InExerciseActivity extends ExerciseActivity {
 
 	public void setCurrentWord(String word) {
 		spokenWord.setText(word);
+	}
+
+	public void setExerciseProgress(int progress) {
+		if(progress == TranslationService.NO_PROGRESS) {
+			progressBar.setVisibility(View.GONE);
+		} else {
+			progressBar.setProgress(progress);
+		}
 	}
 
 }

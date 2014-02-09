@@ -5,6 +5,7 @@ import java.util.Collections;
 import java.util.List;
 
 import be.webfactor.polyglot.domain.Exercise;
+import be.webfactor.polyglot.service.translation.TranslationService;
 
 public class TranslationServiceRandomImpl extends TranslationServiceResourceBundleImpl {
 
@@ -20,6 +21,10 @@ public class TranslationServiceRandomImpl extends TranslationServiceResourceBund
 	
 	protected boolean isLoopFinished() {
 		return false;
+	}
+
+	public int getProgress() {
+		return TranslationService.NO_PROGRESS;
 	}
 
 }

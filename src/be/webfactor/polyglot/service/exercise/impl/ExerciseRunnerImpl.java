@@ -30,6 +30,7 @@ public class ExerciseRunnerImpl implements ExerciseRunner, OnSpeechHandler {
 	public void speakSomething() {
 		SpokenWord word = translationService.getNextWord();
 		speakService.speak(word);
+		activity.setExerciseProgress(translationService.getProgress());
 	}
 
 	public void start(Exercise exercise) {

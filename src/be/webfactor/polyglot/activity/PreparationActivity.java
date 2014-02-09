@@ -1,5 +1,7 @@
 package be.webfactor.polyglot.activity;
 
+import java.util.concurrent.ExecutionException;
+
 import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -14,10 +16,12 @@ import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemSelectedListener;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
+import android.widget.Toast;
 import be.webfactor.polyglot.R;
 import be.webfactor.polyglot.domain.Exercise;
 import be.webfactor.polyglot.domain.Language;
 import be.webfactor.polyglot.domain.Topic;
+import be.webfactor.polyglot.service.connection.impl.InternetConnectionTesterImpl;
 import be.webfactor.polyglot.service.translation.CurrentLanguageContainer;
 
 import com.google.android.gms.ads.AdRequest;
@@ -42,7 +46,7 @@ public class PreparationActivity extends Activity {
 	private int currentTopicIndex;
 	private int currentFromIndex;
 	private int currentToIndex;
-
+	
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		initializeSpinnerValues();
@@ -177,7 +181,12 @@ public class PreparationActivity extends Activity {
 		return adapter;
 	}
 
-	public void startSpeaking(View view) {
+	public void startSpeaking(View view) throws InterruptedException, ExecutionException {
+		if(!new InternetConnectionTesterImpl(this).execute().get()) {
+			Toast.makeText(this, "No internet connection. Please connect and login to Wifi or 3G first", Toast.LENGTH_SHORT).show();
+			return;
+		}
+		
 		Language from = (Language) fromLanguageSpinner.getSelectedItem();
 		Language to = (Language) toLanguageSpinner.getSelectedItem();
 		Topic type = (Topic) topicSpinner.getSelectedItem();

@@ -8,4 +8,6 @@ public abstract class ExerciseActivity extends Activity {
 	
 	abstract public void stopSpeaking();
 	
+	abstract public void setExerciseProgress(int progress);
+	
 }

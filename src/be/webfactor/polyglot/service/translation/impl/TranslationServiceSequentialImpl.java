@@ -24,5 +24,9 @@ public class TranslationServiceSequentialImpl extends TranslationServiceResource
 	protected boolean isLoopFinished() {
 		return index == keys.size();
 	}
+
+	public int getProgress() {
+		return Math.round((float) MAX_PROGRESS * index / keys.size());
+	}
 	
 }

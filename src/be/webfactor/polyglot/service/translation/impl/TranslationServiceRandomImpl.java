@@ -4,8 +4,8 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-import be.webfactor.polyglot.activity.InExerciseActivity;
 import be.webfactor.polyglot.domain.Exercise;
+import be.webfactor.polyglot.service.translation.TranslationService;
 
 public class TranslationServiceRandomImpl extends TranslationServiceResourceBundleImpl {
 
@@ -24,7 +24,7 @@ public class TranslationServiceRandomImpl extends TranslationServiceResourceBund
 	}
 
 	public int getProgress() {
-		return InExerciseActivity.PROGRESS_DISABLED;
+		return TranslationService.NO_PROGRESS;
 	}
 
 }

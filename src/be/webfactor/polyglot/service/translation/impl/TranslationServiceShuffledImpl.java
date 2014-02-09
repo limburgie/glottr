@@ -8,10 +8,12 @@ import be.webfactor.polyglot.domain.Exercise;
 public class TranslationServiceShuffledImpl extends TranslationServiceResourceBundleImpl {
 
 	private List<String> keys;
+	private int total;
 	
 	public TranslationServiceShuffledImpl(Exercise exercise, boolean repeated) {
 		super(exercise, repeated);
 		resetKeys();
+		total = keys.size();
 	}
 
 	protected String getNextKey() {
@@ -33,7 +35,7 @@ public class TranslationServiceShuffledImpl extends TranslationServiceResourceBu
 	}
 
 	public int getProgress() {
-		return 0;
+		return Math.round((float) MAX_PROGRESS * (total - keys.size()) / total);
 	}
 
 }

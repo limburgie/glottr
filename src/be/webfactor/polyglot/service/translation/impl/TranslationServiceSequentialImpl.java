@@ -26,7 +26,7 @@ public class TranslationServiceSequentialImpl extends TranslationServiceResource
 	}
 
 	public int getProgress() {
-		return 0;
+		return Math.round((float) MAX_PROGRESS * index / keys.size());
 	}
 	
 }

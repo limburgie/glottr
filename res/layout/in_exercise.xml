@@ -19,7 +19,9 @@
         android:id="@+id/progress_bar"
         style="@android:style/Widget.ProgressBar.Horizontal"
         android:layout_width="fill_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:layout_margin="10sp"
+        android:max="10000" />
 
     <com.google.android.gms.ads.AdView
         android:id="@+id/ad_view"

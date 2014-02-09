@@ -32,4 +32,8 @@ public class TranslationServiceShuffledImpl extends TranslationServiceResourceBu
 		keys = getKeys(exercise.getFrom());
 	}
 
+	public int getProgress() {
+		return 0;
+	}
+
 }

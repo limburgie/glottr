@@ -1,8 +1,5 @@
 package be.webfactor.polyglot.activity;
 
-import com.google.android.gms.ads.AdRequest;
-import com.google.android.gms.ads.AdView;
-
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
@@ -16,7 +13,12 @@ import be.webfactor.polyglot.service.exercise.ExerciseActivity;
 import be.webfactor.polyglot.service.exercise.ExerciseRunner;
 import be.webfactor.polyglot.service.exercise.ExerciseRunnerFactory;
 
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
+
 public class InExerciseActivity extends ExerciseActivity {
+	
+	public static final int PROGRESS_DISABLED = -1;
 	
 	private ExerciseRunner runner;
 	private TextView spokenWord;
@@ -78,7 +80,11 @@ public class InExerciseActivity extends ExerciseActivity {
 	}
 
 	public void setExerciseProgress(int progress) {
-		progressBar.setProgress(progress);
+		if(progress == PROGRESS_DISABLED) {
+			progressBar.setVisibility(View.GONE);
+		} else {
+			progressBar.setProgress(progress);
+		}
 	}
 
 }

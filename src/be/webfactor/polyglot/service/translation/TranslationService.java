@@ -8,4 +8,6 @@ public interface TranslationService {
 	
 	boolean isFinished();
 	
+	int getProgress();
+	
 }

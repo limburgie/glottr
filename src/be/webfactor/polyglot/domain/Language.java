@@ -5,8 +5,8 @@ import java.util.Locale;
 public enum Language {
 
 	EN("en", "English", "ukenglishfemale"),
-	ES("es", "Español", "eurspanishfemale"),
-	FR("fr", "Français", "eurfrenchfemale"),
+	ES("es", "Espa√±ol", "eurspanishfemale"),
+	FR("fr", "Fran√ßais", "eurfrenchfemale"),
 	DE("de", "Deutsch", "eurgermanfemale"),
 	NL("nl", "Nederlands", "eurdutchfemale");
 	
